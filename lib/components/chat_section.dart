@@ -21,8 +21,8 @@ ListView chatsList = ListView.builder(
     shrinkWrap: true,
     itemBuilder: (context, index) {
       return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
-          height: 65,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          height: 80,
           child: GestureDetector(
             onTap: () {
               if (kDebugMode) {
@@ -38,43 +38,43 @@ ListView chatsList = ListView.builder(
                     }
                   },
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(45),
+                      borderRadius: BorderRadius.circular(50),
                       child: const Image(
                         image: NetworkImage(
                             'https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg'),
-                        height: 45,
+                        height: 50,
                       )),
                 ),
                 Expanded(child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('Robert Baratheon', maxLines: 1, overflow: TextOverflow.fade, softWrap: false,
+                      const Text('Robert Baratheon', maxLines: 1, overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontSize: 17)),
-                      Text('Robert: Be there on time', maxLines: 1, overflow: TextOverflow.fade, softWrap: false,
+                      Text('Robert: pick me up from school', maxLines: 1, overflow: TextOverflow.fade, softWrap: false,
                           style: TextStyle(color: Theme.of(context).colorScheme.tertiary, fontSize: 14)),
                     ],
                   ),
                 )),
-                Container(
-                  decoration: BoxDecoration(
-                      color: const Color(0xff34C759),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                    child: Text(
-                      '99',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500
+                if (index < 3) // show only on chats with unread messages
+                  Container(
+                    decoration: BoxDecoration(
+                        color: const Color(0xff34C759),
+                        borderRadius: BorderRadius.circular(12)
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 9),
+                      child: Text(
+                        '99+',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 11,
+                        ),
                       ),
                     ),
-                  ),
-                )
+                  )
               ],
             ),
           )

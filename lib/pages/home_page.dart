@@ -14,8 +14,8 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.65),
-        surfaceTintColor: Theme.of(context).colorScheme.surface.withOpacity(0.65),
+        backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.75),
+        surfaceTintColor: Theme.of(context).colorScheme.surface.withOpacity(0.75),
         flexibleSpace: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
@@ -25,11 +25,12 @@ class HomePage extends StatelessWidget {
           ),
         ),
         elevation: 0,
-        title: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12),
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text(
             'Sup!',
             style: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
                 fontSize: 20,
                 fontWeight: FontWeight.w500
             ),
@@ -40,7 +41,7 @@ class HomePage extends StatelessWidget {
             if (kDebugMode) {
               print('show search bar');
             }
-          }, icon: SvgPicture.asset('assets/search.svg', height: 20)),
+          }, icon: SvgPicture.asset('assets/search.svg', height: 20, color: Theme.of(context).colorScheme.primary,)),
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: IconButton(onPressed: () {
@@ -63,7 +64,8 @@ class HomePage extends StatelessWidget {
       body: ListView(
         children: const [
           StoriesSection(),
-          ChatSection()
+          ChatSection(),
+          SizedBox(height: 120)
         ]
       ),
     );

@@ -88,7 +88,7 @@ SizedBox storiesList = SizedBox(
                     )),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5),
-                  child: Text('dummy',
+                  child: Text('Jon Snow',
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(fontSize: 13)),
                 )
