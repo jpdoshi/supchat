@@ -50,10 +50,13 @@ SizedBox storiesList = SizedBox(
                             color: const Color(0xff007AFF),
                             borderRadius: BorderRadius.circular(50)
                           ),
-                          child: const Icon(
-                            Icons.add, color: Colors.white,
-                            size: 20,
-                        ))
+                          child: const Padding(
+                            padding: EdgeInsets.all(2),
+                            child: Icon(
+                              Icons.add, color: Colors.white,
+                              size: 18,
+                            ),
+                          ))
                     )
                   ]),
                 const Padding(

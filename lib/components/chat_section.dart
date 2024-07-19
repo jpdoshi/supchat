@@ -16,7 +16,7 @@ class ChatSection extends StatelessWidget {
 }
 
 ListView chatsList = ListView.builder(
-    itemCount: 20,
+    itemCount: 10,
     primary: false,
     shrinkWrap: true,
     itemBuilder: (context, index) {
@@ -46,7 +46,7 @@ ListView chatsList = ListView.builder(
                       )),
                 ),
                 Expanded(child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,12 +65,13 @@ ListView chatsList = ListView.builder(
                         borderRadius: BorderRadius.circular(12)
                     ),
                     child: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 9),
+                      padding: EdgeInsets.symmetric(vertical: 3, horizontal: 8),
                       child: Text(
                         '99+',
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 11,
+                          color: Colors.white,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w500
                         ),
                       ),
                     ),
