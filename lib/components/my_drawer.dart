@@ -17,18 +17,42 @@ class MyDrawer extends StatelessWidget {
           child: SafeArea(
             child: Column(
               children: [
-                const SizedBox(height: 35),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(150),
-                  child: const Image(
-                    height: 150,
-                    image: NetworkImage(
-                        'https://avatars.githubusercontent.com/u/122164427?s=400&u=d4a22ee156dbd3d5e6224db222da1c2f1c56d230&v=4'),
-                )),
+                const SizedBox(height: 50),
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(165),
+                      child: const Image(
+                        height: 165,
+                        image: NetworkImage(
+                            'https://avatars.githubusercontent.com/u/122164427?s=400&u=d4a22ee156dbd3d5e6224db222da1c2f1c56d230&v=4'),
+                    )),
+                    Positioned(
+                      right: 7,
+                      bottom: 7,
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.surface,
+                          borderRadius: BorderRadius.circular(32)
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: const Color(0xff34C759),
+                              borderRadius: BorderRadius.circular(32)
+                            ),
+                          ),
+                        ),
+                    ))
+                  ]
+                ),
                 const SizedBox(height: 8),
                 const Text('Jainam Doshi', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
-                Text('+91 9303041034', style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.tertiary)),
-                const SizedBox(height: 35),
+                Text('+91 9303041034', style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.secondary)),
+                const SizedBox(height: 50),
               ],
             ),
           ),

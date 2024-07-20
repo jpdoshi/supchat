@@ -27,8 +27,9 @@ class HomePage extends StatelessWidget {
           ),
         ),
         elevation: 0,
+        centerTitle: true,
         title: Text(
-          'Sup!',
+          '\'Sup!',
           style: TextStyle(
             color: Theme.of(context).colorScheme.primary,
             fontSize: 20,
@@ -36,19 +37,15 @@ class HomePage extends StatelessWidget {
           ),
         ),
         actions: [
-          IconButton(onPressed: () {
-            if (kDebugMode) {
-              print('show search bar');
-            }
-          }, icon: SvgPicture.asset('assets/search.svg', height: 20, color: Theme.of(context).colorScheme.primary,)),
           Padding(
-            padding: const EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 6),
             child: IconButton(onPressed: () {
               if (kDebugMode) {
-                print('show menu');
+                print('show search bar');
               }
-            }, icon: const Icon(Icons.more_horiz)),
-          )
+            }, icon: SvgPicture.asset('assets/search.svg', height: 20, color: Theme.of(context).colorScheme.primary)),
+          ),
+
         ],
       ),
       backgroundColor: Theme.of(context).colorScheme.surface,
