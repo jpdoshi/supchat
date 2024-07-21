@@ -45,22 +45,22 @@ SizedBox storiesList = SizedBox(
                           height: 66,
                       )),
                       Positioned(
-                          right: 0,
-                          bottom: 0,
+                          right: -1,
+                          bottom: -1,
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
                               color: Theme.of(context).colorScheme.surface,
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(2.5),
+                              padding: const EdgeInsets.all(3),
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: const Color(0xff007AFF),
                                   borderRadius: BorderRadius.circular(50)
                                 ),
                                 child: const Padding(
-                                  padding: EdgeInsets.all(2.5),
+                                  padding: EdgeInsets.all(2),
                                   child: Icon(
                                     Icons.add, color: Colors.white,
                                     size: 13

@@ -55,6 +55,7 @@ class HomePage extends StatelessWidget {
             print('Add Chat');
           }
         },
+        shape: const CircleBorder(),
         child: const Icon(Icons.add),
       ),
       body: ListView(
