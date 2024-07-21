@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:supchat/styles/colors.dart';
 
 class StoriesSection extends StatelessWidget {
   const StoriesSection({super.key});
@@ -56,7 +57,7 @@ SizedBox storiesList = SizedBox(
                               padding: const EdgeInsets.all(3),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0xff007AFF),
+                                  color: iosBlue,
                                   borderRadius: BorderRadius.circular(50)
                                 ),
                                 child: const Padding(

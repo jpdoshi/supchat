@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:supchat/styles/colors.dart';
 
 class ChatSection extends StatelessWidget {
   const ChatSection({super.key});
@@ -60,7 +61,7 @@ ListView chatsList = ListView.builder(
                                 padding: const EdgeInsets.all(2.5),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: const Color(0xff34C759),
+                                      color: iosGreen,
                                       borderRadius: BorderRadius.circular(12)
                                   ),
                                 ),
@@ -96,7 +97,7 @@ ListView chatsList = ListView.builder(
                         if (index < 3) // show only on chats with unread messages
                           Container(
                             decoration: BoxDecoration(
-                                color: const Color(0xff34C759),
+                                color: iosGreen,
                                 borderRadius: BorderRadius.circular(12)
                             ),
                             child: const Padding(

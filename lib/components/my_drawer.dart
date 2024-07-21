@@ -1,11 +1,7 @@
 import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:supchat/styles/colors.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -21,14 +17,8 @@ class MyDrawer extends StatelessWidget {
           child: SafeArea(
             child: Column(
               children: [
-                const SizedBox(height: 40),
-                GestureDetector(
-                  onTap: () {
-                    if (kDebugMode) {
-                      print('Edit Profile');
-                    }
-                  },
-                  child: Stack(
+                const SizedBox(height: 35),
+                Stack(
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(150),
@@ -38,48 +28,55 @@ class MyDrawer extends StatelessWidget {
                               'https://avatars.githubusercontent.com/u/122164427?s=400&u=d4a22ee156dbd3d5e6224db222da1c2f1c56d230&v=4'),
                       )),
                       Positioned(
-                        right: 2,
-                        bottom: 2,
+                        right: 4,
+                        bottom: 4,
                         child: Container(
-                          height: 36,
-                          width: 36,
+                          height: 30,
+                          width: 30,
                           decoration: BoxDecoration(
                             color: Theme.of(context).colorScheme.surface,
                             borderRadius: BorderRadius.circular(32)
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(4.5),
+                            padding: const EdgeInsets.all(5),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: const Color(0xff007AFF),
-                                borderRadius: BorderRadius.circular(36),
+                                color: iosGreen,
+                                borderRadius: BorderRadius.circular(32),
                               ),
-                              child: const Icon(Icons.edit_outlined, size: 18, color: Colors.white),
                             ),
                           ),
                       ))
                     ]
-                  ),
                 ),
                 const SizedBox(height: 6),
                 const Text('Jainam Doshi', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
                 Text('+91 9303041034', style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.secondary)),
-                const SizedBox(height: 40),
+                const SizedBox(height: 25),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text('Settings', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
-                          Icon(Icons.settings_rounded, size: 20)
-                        ],
+                    const SizedBox(height: 20),
+                    GestureDetector(
+                      onTap: () {
+                        if (kDebugMode) {
+                          print('Profile Settings');
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 30),
+                        height: 50,
+                        child: const Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.edit_outlined, size: 24),
+                            SizedBox(width: 20),
+                            Text('Profile', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                          ],
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    Divider(color: Theme.of(context).colorScheme.tertiary),
                     GestureDetector(
                       onTap: () {
                         if (kDebugMode) {
@@ -88,7 +85,7 @@ class MyDrawer extends StatelessWidget {
                       },
                       child: Container(
                         padding: const EdgeInsets.only(left: 30),
-                        height: 54,
+                        height: 50,
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -99,6 +96,27 @@ class MyDrawer extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Divider(color: Theme.of(context).colorScheme.tertiary),
+                    GestureDetector(
+                      onTap: () {
+                        if (kDebugMode) {
+                          print('Saved Messages');
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 30),
+                        height: 50,
+                        child: const Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.bookmark_border_rounded, size: 24),
+                            SizedBox(width: 20),
+                            Text('Saved Messages', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Divider(color: Theme.of(context).colorScheme.tertiary),
                     GestureDetector(
                       onTap: () {
                         if (kDebugMode) {
@@ -107,7 +125,7 @@ class MyDrawer extends StatelessWidget {
                       },
                       child: Container(
                         padding: const EdgeInsets.only(left: 30),
-                        height: 54,
+                        height: 50,
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -118,6 +136,7 @@ class MyDrawer extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Divider(color: Theme.of(context).colorScheme.tertiary),
                     GestureDetector(
                       onTap: () {
                         if (kDebugMode) {
@@ -126,7 +145,7 @@ class MyDrawer extends StatelessWidget {
                       },
                       child: Container(
                         padding: const EdgeInsets.only(left: 30),
-                        height: 54,
+                        height: 50,
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -137,6 +156,7 @@ class MyDrawer extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Divider(color: Theme.of(context).colorScheme.tertiary),
                     GestureDetector(
                       onTap: () {
                         if (kDebugMode) {
@@ -145,7 +165,7 @@ class MyDrawer extends StatelessWidget {
                       },
                       child: Container(
                         padding: const EdgeInsets.only(left: 30),
-                        height: 54,
+                        height: 50,
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -156,25 +176,27 @@ class MyDrawer extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Divider(color: Theme.of(context).colorScheme.tertiary),
                     GestureDetector(
                       onTap: () {
                         if (kDebugMode) {
-                          print('More Settings');
+                          print('More Info');
                         }
                       },
                       child: Container(
                         padding: const EdgeInsets.only(left: 30),
-                        height: 54,
+                        height: 50,
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Icon(Icons.info_outline_rounded, size: 24),
                             SizedBox(width: 20),
-                            Text('Know More', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                            Text('More Info', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
-                    )
+                    ),
+                    Divider(color: Theme.of(context).colorScheme.tertiary),
                   ]
                 )
               ],
