@@ -3,20 +3,15 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:supchat/pages/add_chat.dart';
+import '../components/contacts_section.dart';
 
-import '../components/chats_section.dart';
-import '../components/my_drawer.dart';
-import '../components/stories_section.dart';
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class AddChat extends StatelessWidget {
+  const AddChat({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      drawer: const MyDrawer(),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.8),
         surfaceTintColor: Theme.of(context).colorScheme.surface.withOpacity(0.8),
@@ -31,7 +26,7 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          '\'Sup!',
+          'Add Chat',
           style: TextStyle(
               color: Theme.of(context).colorScheme.primary,
               fontSize: 18,
@@ -40,40 +35,25 @@ class HomePage extends StatelessWidget {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: IconButton(onPressed: () {
+            padding: const EdgeInsets.only(right: 6),
+            child: IconButton(
+                onPressed: () {
               if (kDebugMode) {
                 ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       duration: const Duration(milliseconds: 400),
-                      content: Text('show search bar', style: TextStyle(
+                      content: Text('sync contacts', style: TextStyle(
                           color: Theme.of(context).colorScheme.primary
                       )),
                       backgroundColor: Theme.of(context).colorScheme.surface,
                     ));
               }
-            }, icon: SvgPicture.asset('assets/search.svg', height: 20, color: Theme.of(context).colorScheme.primary)),
+            }, icon: const Icon(Icons.sync, size: 24)),
           ),
-
         ],
       ),
       backgroundColor: Theme.of(context).colorScheme.surface,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context) => const AddChat()
-          ));
-        },
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        child: const Icon(Icons.add)
-      ),
-      body: ListView(
-          children: const [
-            StoriesSection(),
-            ChatSection(),
-            SizedBox(height: 120)
-          ]
-      ),
-    );;
+      body: const ContactsSection(),
+    );
   }
 }

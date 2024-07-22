@@ -10,14 +10,16 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        BackdropFilter(filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6), child: const SizedBox.expand(),),
+        BackdropFilter(filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6), child: const SizedBox.expand()),
         Drawer(
-          elevation: 0,
-          shape: const LinearBorder(),
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(
+            topRight: Radius.circular(40),
+            bottomRight: Radius.circular(40)
+          )),
           child: SafeArea(
             child: Column(
               children: [
-                const SizedBox(height: 35),
+                const SizedBox(height: 25),
                 Stack(
                     children: [
                       ClipRRect(
@@ -28,11 +30,11 @@ class MyDrawer extends StatelessWidget {
                               'https://avatars.githubusercontent.com/u/122164427?s=400&u=d4a22ee156dbd3d5e6224db222da1c2f1c56d230&v=4'),
                       )),
                       Positioned(
-                        right: 4,
-                        bottom: 4,
+                        right: 6,
+                        bottom: 6,
                         child: Container(
-                          height: 30,
-                          width: 30,
+                          height: 28,
+                          width: 28,
                           decoration: BoxDecoration(
                             color: Theme.of(context).colorScheme.surface,
                             borderRadius: BorderRadius.circular(32)
@@ -50,37 +52,30 @@ class MyDrawer extends StatelessWidget {
                     ]
                 ),
                 const SizedBox(height: 6),
-                const Text('Jainam Doshi', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500)),
+                const Text('Jainam Doshi', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 Text('+91 9303041034', style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.secondary)),
                 const SizedBox(height: 25),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 20),
-                    GestureDetector(
-                      onTap: () {
-                        if (kDebugMode) {
-                          print('Profile Settings');
-                        }
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 30),
-                        height: 50,
-                        child: const Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(Icons.edit_outlined, size: 24),
-                            SizedBox(width: 20),
-                            Text('Profile', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                          ],
-                        ),
-                      ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 34),
+                      child: Text('Settings', style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold
+                        )),
                     ),
-                    Divider(color: Theme.of(context).colorScheme.tertiary),
-                    GestureDetector(
+                    const SizedBox(height: 15),
+                    InkWell(
                       onTap: () {
                         if (kDebugMode) {
-                          print('Account Settings');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                duration: const Duration(milliseconds: 400),
+                                content: Text('Profile Settings', style: TextStyle(
+                                    color: Theme.of(context).colorScheme.primary
+                                )),
+                                backgroundColor: Theme.of(context).colorScheme.surface,
+                              ));
                         }
                       },
                       child: Container(
@@ -91,16 +86,22 @@ class MyDrawer extends StatelessWidget {
                           children: [
                             Icon(Icons.account_circle_outlined, size: 24),
                             SizedBox(width: 20),
-                            Text('Account', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                            Text('My Profile', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
                     ),
-                    Divider(color: Theme.of(context).colorScheme.tertiary),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         if (kDebugMode) {
-                          print('Saved Messages');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                duration: const Duration(milliseconds: 400),
+                                content: Text('Account Settings', style: TextStyle(
+                                    color: Theme.of(context).colorScheme.primary
+                                )),
+                                backgroundColor: Theme.of(context).colorScheme.surface,
+                              ));
                         }
                       },
                       child: Container(
@@ -109,18 +110,50 @@ class MyDrawer extends StatelessWidget {
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(Icons.bookmark_border_rounded, size: 24),
+                            Icon(Icons.switch_account_outlined, size: 24),
                             SizedBox(width: 20),
-                            Text('Saved Messages', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                            Text('Account', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
                     ),
-                    Divider(color: Theme.of(context).colorScheme.tertiary),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         if (kDebugMode) {
-                          print('Privacy Settings');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                duration: const Duration(milliseconds: 400),
+                                content: Text('Favorites', style: TextStyle(
+                                    color: Theme.of(context).colorScheme.primary
+                                )),
+                                backgroundColor: Theme.of(context).colorScheme.surface,
+                              ));
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 30),
+                        height: 50,
+                        child: const Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.favorite_border_rounded, size: 24),
+                            SizedBox(width: 20),
+                            Text('Favorites', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                          ],
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        if (kDebugMode) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                duration: const Duration(milliseconds: 400),
+                                content: Text('Privacy Settings', style: TextStyle(
+                                    color: Theme.of(context).colorScheme.primary
+                                )),
+                                backgroundColor: Theme.of(context).colorScheme.surface,
+                              ));
                         }
                       },
                       child: Container(
@@ -131,16 +164,22 @@ class MyDrawer extends StatelessWidget {
                           children: [
                             Icon(Icons.lock_outline_rounded, size: 24),
                             SizedBox(width: 20),
-                            Text('Privacy', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                            Text('Privacy', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
                     ),
-                    Divider(color: Theme.of(context).colorScheme.tertiary),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         if (kDebugMode) {
-                          print('Storage Settings');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                duration: const Duration(milliseconds: 400),
+                                content: Text('Storage Settings', style: TextStyle(
+                                    color: Theme.of(context).colorScheme.primary
+                                )),
+                                backgroundColor: Theme.of(context).colorScheme.surface,
+                              ));
                         }
                       },
                       child: Container(
@@ -149,18 +188,24 @@ class MyDrawer extends StatelessWidget {
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(Icons.data_usage_outlined, size: 24),
+                            Icon(Icons.data_usage_rounded, size: 24),
                             SizedBox(width: 20),
-                            Text('Your Data', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                            Text('Data & Storage', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
                     ),
-                    Divider(color: Theme.of(context).colorScheme.tertiary),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         if (kDebugMode) {
-                          print('Help Settings');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                duration: const Duration(milliseconds: 400),
+                                content: Text('Help Settings', style: TextStyle(
+                                    color: Theme.of(context).colorScheme.primary
+                                )),
+                                backgroundColor: Theme.of(context).colorScheme.surface,
+                              ));
                         }
                       },
                       child: Container(
@@ -171,16 +216,22 @@ class MyDrawer extends StatelessWidget {
                           children: [
                             Icon(Icons.help_outline_rounded, size: 24),
                             SizedBox(width: 20),
-                            Text('Need Help?', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                            Text('Need Help?', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
                     ),
-                    Divider(color: Theme.of(context).colorScheme.tertiary),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         if (kDebugMode) {
-                          print('More Info');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                duration: const Duration(milliseconds: 400),
+                                content: Text('More Info', style: TextStyle(
+                                    color: Theme.of(context).colorScheme.primary
+                                )),
+                                backgroundColor: Theme.of(context).colorScheme.surface,
+                              ));
                         }
                       },
                       child: Container(
@@ -191,12 +242,11 @@ class MyDrawer extends StatelessWidget {
                           children: [
                             Icon(Icons.info_outline_rounded, size: 24),
                             SizedBox(width: 20),
-                            Text('More Info', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                            Text('More Info', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
                     ),
-                    Divider(color: Theme.of(context).colorScheme.tertiary),
                   ]
                 )
               ],

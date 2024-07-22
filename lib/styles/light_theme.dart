@@ -5,7 +5,7 @@ ThemeData lightTheme = ThemeData(
     surface: Colors.white,
     primary: Color(0xff121212),
     secondary: Color(0xff848484),
-    tertiary: Color(0xff666666),
+    tertiary: Color(0xffDDDDDD),
     inverseSurface: Color(0xffF5F5F5),
   ),
   textTheme: const TextTheme(

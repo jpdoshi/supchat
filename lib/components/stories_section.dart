@@ -24,7 +24,14 @@ SizedBox storiesList = SizedBox(
         GestureDetector(
           onTap: () {
             if (kDebugMode) {
-              print('story for this user');
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    duration: const Duration(milliseconds: 400),
+                    content: Text('story for this user', style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary
+                    )),
+                    backgroundColor: Theme.of(context).colorScheme.surface,
+                  ));
             }
           },
           child: Container(
@@ -84,7 +91,14 @@ SizedBox storiesList = SizedBox(
         GestureDetector(
           onTap: () {
             if (kDebugMode) {
-              print('show story for index: $index');
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    duration: const Duration(milliseconds: 400),
+                    content: Text('show story for index: $index', style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary
+                    )),
+                    backgroundColor: Theme.of(context).colorScheme.surface,
+                  ));
             }
           },
           child: Container(
