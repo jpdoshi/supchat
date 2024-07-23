@@ -7,7 +7,9 @@ List<String> filterList = ['All', 'Favorites', 'Groups', 'Archived'];
 int filterIndex = 0;
 
 class ChatSection extends StatefulWidget {
-  const ChatSection({super.key});
+  final bool showSearchBar;
+
+  const ChatSection({super.key, required this.showSearchBar});
 
   @override
   State<ChatSection> createState() => _ChatSectionState();
@@ -19,38 +21,47 @@ class _ChatSectionState extends State<ChatSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surface,
-                  boxShadow: [BoxShadow(
-                      color: Colors.black.withOpacity(0.12),
-                      blurRadius: 6,
-                      offset: const Offset(0, 1)
-                  )],
-                  borderRadius: BorderRadius.circular(15)
-              ),
-              child: TextField(
-                style: TextStyle(color: Theme.of(context).colorScheme.primary),
-                decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 12),
-                    hintText: 'Search Chats',
-                    hintStyle: TextStyle(color: Theme.of(context).colorScheme.secondary),
-                    filled: true,
-                    fillColor: Theme.of(context).colorScheme.inversePrimary,
-                    prefixIcon: Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: SvgPicture.asset(
-                          'assets/search.svg',
-                          color: Theme.of(context).colorScheme.secondary,
+        Visibility(
+          visible: widget.showSearchBar,
+          maintainAnimation: true,
+          maintainState: true,
+          child: AnimatedOpacity(
+            opacity: widget.showSearchBar ? 1 : 0,
+            duration: const Duration(milliseconds: 500),
+            child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surface,
+                      boxShadow: [BoxShadow(
+                          color: Colors.black.withOpacity(0.12),
+                          blurRadius: 6,
+                          offset: const Offset(0, 1)
+                      )],
+                      borderRadius: BorderRadius.circular(15)
+                  ),
+                  child: TextField(
+                    style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                    decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+                        hintText: 'Search Chats',
+                        hintStyle: TextStyle(color: Theme.of(context).colorScheme.secondary),
+                        filled: true,
+                        fillColor: Theme.of(context).colorScheme.inversePrimary,
+                        prefixIcon: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: SvgPicture.asset(
+                              'assets/search.svg',
+                              color: Theme.of(context).colorScheme.secondary,
+                            )),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide: BorderSide.none
                         )),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide.none
-                    )),
-              ),
-            )
+                  ),
+                )
+            ),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),

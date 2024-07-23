@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
@@ -9,9 +10,15 @@ import '../components/chats_section.dart';
 import '../components/my_drawer.dart';
 import '../components/stories_section.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool showSearchBar = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,38 +49,31 @@ class HomePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6),
             child: IconButton(onPressed: () {
-              if (kDebugMode) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      duration: const Duration(milliseconds: 400),
-                      content: Text('show search bar', style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary
-                      )),
-                      backgroundColor: Theme.of(context).colorScheme.surface,
-                    ));
-              }
+              setState(() {
+                showSearchBar = !showSearchBar;
+              });
             }, icon: SvgPicture.asset('assets/search.svg', height: 20, color: Theme.of(context).colorScheme.primary)),
           ),
-
         ],
       ),
       backgroundColor: Theme.of(context).colorScheme.surface,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context) => const AddChat()
-          ));
-        },
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-        child: const Icon(Icons.add)
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(
+                builder: (context) => const AddChat()
+            ));
+          },
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+          child: const Icon(Icons.add)
       ),
       body: ListView(
-          children: const [
-            StoriesSection(),
-            ChatSection(),
-            SizedBox(height: 120)
+          children: [
+            const StoriesSection(),
+            ChatSection(showSearchBar: showSearchBar),
+            const SizedBox(height: 120)
           ]
       ),
-    );;
+    );
   }
 }
+
