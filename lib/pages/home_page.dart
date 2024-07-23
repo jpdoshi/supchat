@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
             builder: (context) => const AddChat()
           ));
         },
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         child: const Icon(Icons.add)
       ),
       body: ListView(

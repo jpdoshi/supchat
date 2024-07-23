@@ -5,8 +5,8 @@ ThemeData darkTheme = ThemeData(
         surface: Color(0xff121212),
         primary: Color(0xffFAFAFA),
         secondary: Color(0xff9e9e9e),
-        tertiary: Color(0xff424242),
-        inverseSurface: Color(0xff242424)
+        tertiary: Color(0xff212121),
+        inversePrimary: Color(0xff242424)
     ),
     textTheme: const TextTheme(
         titleMedium: TextStyle(color: Colors.white),

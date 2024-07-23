@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:supchat/styles/colors.dart';
 
 List<String> filterList = ['All', 'Favorites', 'Groups', 'Archived'];
@@ -19,28 +20,58 @@ class _ChatSectionState extends State<ChatSection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surface,
+                  boxShadow: [BoxShadow(
+                      color: Colors.black.withOpacity(0.12),
+                      blurRadius: 6,
+                      offset: const Offset(0, 1)
+                  )],
+                  borderRadius: BorderRadius.circular(15)
+              ),
+              child: TextField(
+                style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+                    hintText: 'Search Chats',
+                    hintStyle: TextStyle(color: Theme.of(context).colorScheme.secondary),
+                    filled: true,
+                    fillColor: Theme.of(context).colorScheme.inversePrimary,
+                    prefixIcon: Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: SvgPicture.asset(
+                          'assets/search.svg',
+                          color: Theme.of(context).colorScheme.secondary,
+                        )),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide.none
+                    )),
+              ),
+            )
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Wrap(
             spacing: 6,
             children: List.generate(filterList.length, (index) {
               return ChoiceChip(
-                elevation: 2,
                 showCheckmark: false,
-                padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+                labelPadding: const EdgeInsets.symmetric(horizontal: 6),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  side: BorderSide(color:
-                    (index == filterIndex) ? Theme.of(context).colorScheme.primary
-                      : Theme.of(context).colorScheme.tertiary
-                  )),
-                backgroundColor: Theme.of(context).colorScheme.surface,
+                  borderRadius: BorderRadius.circular(10),
+                  side: BorderSide(color: Theme.of(context).colorScheme.surface)
+                ),
+                backgroundColor: Theme.of(context).colorScheme.tertiary,
                 label: Text(
                   filterList[index],
                   style: TextStyle(
                     color: (index == filterIndex) ? Theme.of(context).colorScheme.surface : Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.w500,
                     fontSize: 13,
-                    height: 0.5
+                    height: 0.4
                   ),
                 ),
                 selected: filterIndex == index,
@@ -101,7 +132,7 @@ ListView chatsList = ListView.builder(
                   )),
                   builder: (context) {
                 return SizedBox(
-                  height: 230,
+                  height: 240,
                   child: Column(
                           children: [
                             Center(
@@ -109,10 +140,7 @@ ListView chatsList = ListView.builder(
                               child: Container(
                                 height: 4,
                                 width: 60,
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  borderRadius: BorderRadius.circular(4)
-                                ),
+                                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -128,7 +156,7 @@ ListView chatsList = ListView.builder(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.only(left: 30),
+                                      padding: EdgeInsets.only(left: 32),
                                       child: Row(
                                         children: [
                                           Icon(Icons.favorite_border_rounded, size: 24),
@@ -156,7 +184,7 @@ ListView chatsList = ListView.builder(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.only(left: 30),
+                                      padding: EdgeInsets.only(left: 32),
                                       child: Row(
                                         children: [
                                           Icon(Icons.remove_circle_outline_rounded, size: 24),
@@ -184,7 +212,7 @@ ListView chatsList = ListView.builder(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.only(left: 30),
+                                      padding: EdgeInsets.only(left: 32),
                                       child: Row(
                                         children: [
                                           Icon(Icons.archive_outlined, size: 24),

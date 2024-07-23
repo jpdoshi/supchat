@@ -59,12 +59,12 @@ class MyDrawer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 34),
+                      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 36),
                       child: Text('Settings', style: TextStyle(
                             fontSize: 17, fontWeight: FontWeight.bold
                         )),
                     ),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 6),
                     InkWell(
                       onTap: () {
                         if (kDebugMode) {
@@ -79,7 +79,7 @@ class MyDrawer extends StatelessWidget {
                         }
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 30),
+                        padding: const EdgeInsets.only(left: 32),
                         height: 50,
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -105,7 +105,7 @@ class MyDrawer extends StatelessWidget {
                         }
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 30),
+                        padding: const EdgeInsets.only(left: 32),
                         height: 50,
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -131,7 +131,7 @@ class MyDrawer extends StatelessWidget {
                         }
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 30),
+                        padding: const EdgeInsets.only(left: 32),
                         height: 50,
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -157,7 +157,7 @@ class MyDrawer extends StatelessWidget {
                         }
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 30),
+                        padding: const EdgeInsets.only(left: 32),
                         height: 50,
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -183,7 +183,7 @@ class MyDrawer extends StatelessWidget {
                         }
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 30),
+                        padding: const EdgeInsets.only(left: 32),
                         height: 50,
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -209,7 +209,7 @@ class MyDrawer extends StatelessWidget {
                         }
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 30),
+                        padding: const EdgeInsets.only(left: 32),
                         height: 50,
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -235,7 +235,7 @@ class MyDrawer extends StatelessWidget {
                         }
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 30),
+                        padding: const EdgeInsets.only(left: 32),
                         height: 50,
                         child: const Row(
                           crossAxisAlignment: CrossAxisAlignment.center,

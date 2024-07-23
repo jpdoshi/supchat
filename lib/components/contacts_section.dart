@@ -15,7 +15,7 @@ class ContactsSection extends StatelessWidget {
       children: [
         const SizedBox(height: 8),
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: 6, horizontal: 28),
+          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 30),
           child: Text('Actions', style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 17
@@ -41,8 +41,8 @@ class ContactsSection extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      height: 46,
-                      width: 46,
+                      height: 44,
+                      width: 44,
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.primary,
                         borderRadius: BorderRadius.circular(12)
@@ -50,14 +50,14 @@ class ContactsSection extends StatelessWidget {
                       child: Icon(
                         Icons.person_add_alt_outlined,
                         color: Theme.of(context).colorScheme.surface,
-                        size: 22,
+                        size: 20,
                       ),
                     ),
                     const Expanded(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        padding: EdgeInsets.symmetric(horizontal: 14),
                         child: Text('Add Contact', maxLines: 1, overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 17)),
+                            style: TextStyle(fontSize: 16)),
                       ),
                     ),
                   ],
@@ -85,8 +85,8 @@ class ContactsSection extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      height: 46,
-                      width: 46,
+                      height: 44,
+                      width: 44,
                       decoration: BoxDecoration(
                           color: Theme.of(context).colorScheme.primary,
                           borderRadius: BorderRadius.circular(12)
@@ -94,14 +94,14 @@ class ContactsSection extends StatelessWidget {
                       child: Icon(
                         Icons.group_add_outlined,
                         color: Theme.of(context).colorScheme.surface,
-                        size: 22,
+                        size: 20,
                       ),
                     ),
                     const Expanded(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        padding: EdgeInsets.symmetric(horizontal: 14),
                         child: Text('Add Group', maxLines: 1, overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 17)),
+                            style: TextStyle(fontSize: 16)),
                       ),
                     ),
                   ],
@@ -109,16 +109,16 @@ class ContactsSection extends StatelessWidget {
               ),
             )
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 16),
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: 6, horizontal: 28),
+          padding: EdgeInsets.symmetric(horizontal: 30),
           child: Text('Contacts', style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 17
           )),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 18),
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
           child: Container(
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surface,
@@ -127,25 +127,27 @@ class ContactsSection extends StatelessWidget {
                 blurRadius: 6,
                 offset: const Offset(0, 1)
               )],
-              borderRadius: BorderRadius.circular(50)
+              borderRadius: BorderRadius.circular(15)
             ),
             child: TextField(
-                  decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-                      hintText: 'Search Contacts',
-                      hintStyle: TextStyle(color: Theme.of(context).colorScheme.secondary),
-                      prefixIcon: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: SvgPicture.asset(
-                            'assets/search.svg',
-                            height: 8,
-                            width: 8,
-                            color: Theme.of(context).colorScheme.secondary,
-                          )),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                          borderSide: BorderSide.none)),
-                ),
+              style: TextStyle(color: Theme.of(context).colorScheme.primary),
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+                hintText: 'Search Contacts',
+                hintStyle: TextStyle(color: Theme.of(context).colorScheme.secondary),
+                filled: true,
+                fillColor: Theme.of(context).colorScheme.inversePrimary,
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: SvgPicture.asset(
+                    'assets/search.svg',
+                    color: Theme.of(context).colorScheme.secondary,
+                )),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide.none
+              )),
+            ),
           )
         ),
         contactsList,
