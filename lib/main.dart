@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:supchat/pages/home_page.dart';
 import 'package:supchat/styles/dark_theme.dart';
 import 'package:supchat/styles/light_theme.dart';
 
 void main() {
   runApp(const MyApp());
+
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent
+  ));
 }
 
 class MyApp extends StatelessWidget {

@@ -45,7 +45,7 @@ class ContactsSection extends StatelessWidget {
                       width: 44,
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(12)
+                        borderRadius: BorderRadius.circular(10)
                       ),
                       child: Icon(
                         Icons.person_add_alt_outlined,
@@ -89,7 +89,7 @@ class ContactsSection extends StatelessWidget {
                       width: 44,
                       decoration: BoxDecoration(
                           color: Theme.of(context).colorScheme.primary,
-                          borderRadius: BorderRadius.circular(12)
+                          borderRadius: BorderRadius.circular(10)
                       ),
                       child: Icon(
                         Icons.group_add_outlined,
@@ -141,7 +141,7 @@ class ContactsSection extends StatelessWidget {
                   padding: const EdgeInsets.all(12),
                   child: SvgPicture.asset(
                     'assets/search.svg',
-                    color: Theme.of(context).colorScheme.secondary,
+                    colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
                 )),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),

@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:supchat/pages/add_chat.dart';
@@ -52,19 +50,20 @@ class _HomePageState extends State<HomePage> {
               setState(() {
                 showSearchBar = !showSearchBar;
               });
-            }, icon: SvgPicture.asset('assets/search.svg', height: 20, color: Theme.of(context).colorScheme.primary)),
+            }, icon: SvgPicture.asset('assets/search.svg', height: 20, colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.primary, BlendMode.srcIn))),
           ),
         ],
       ),
       backgroundColor: Theme.of(context).colorScheme.surface,
       floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) => const AddChat()
-            ));
-          },
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-          child: const Icon(Icons.add)
+        elevation: 0,
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) => const AddChat()
+          ));
+        },
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        child: const Icon(Icons.add)
       ),
       body: ListView(
           children: [

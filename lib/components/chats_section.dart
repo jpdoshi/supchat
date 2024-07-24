@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:supchat/pages/chat_page.dart';
 import 'package:supchat/styles/colors.dart';
 
 List<String> filterList = ['All', 'Favorites', 'Groups', 'Archived'];
@@ -21,13 +22,10 @@ class _ChatSectionState extends State<ChatSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Visibility(
-          visible: widget.showSearchBar,
-          maintainAnimation: true,
-          maintainState: true,
-          child: AnimatedOpacity(
-            opacity: widget.showSearchBar ? 1 : 0,
-            duration: const Duration(milliseconds: 500),
+        AnimatedContainer(
+            height: widget.showSearchBar ? 62 : 0,
+            alignment: Alignment.topCenter,
+            duration: const Duration(milliseconds: 300),
             child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
                 child: Container(
@@ -52,7 +50,7 @@ class _ChatSectionState extends State<ChatSection> {
                             padding: const EdgeInsets.all(12),
                             child: SvgPicture.asset(
                               'assets/search.svg',
-                              color: Theme.of(context).colorScheme.secondary,
+                              colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
                             )),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
@@ -61,9 +59,9 @@ class _ChatSectionState extends State<ChatSection> {
                   ),
                 )
             ),
-          ),
         ),
-        Padding(
+        Container(
+          color: Theme.of(context).colorScheme.surface,
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Wrap(
             spacing: 6,
@@ -71,9 +69,9 @@ class _ChatSectionState extends State<ChatSection> {
               return ChoiceChip(
                 showCheckmark: false,
                 labelPadding: const EdgeInsets.symmetric(horizontal: 6),
+                side: BorderSide(width: 0, color: Theme.of(context).colorScheme.tertiary),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(color: Theme.of(context).colorScheme.surface)
                 ),
                 backgroundColor: Theme.of(context).colorScheme.tertiary,
                 label: Text(
@@ -132,6 +130,8 @@ ListView chatsList = ListView.builder(
                       backgroundColor: Theme.of(context).colorScheme.surface,
                     ));
               }
+
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatPage()));
             },
             onLongPress: () {
               showModalBottomSheet(
