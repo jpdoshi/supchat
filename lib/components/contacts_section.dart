@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:supchat/pages/chat_page.dart';
 
 import '../styles/colors.dart';
 
@@ -176,6 +177,8 @@ ListView contactsList = ListView.builder(
                       backgroundColor: Theme.of(context).colorScheme.surface,
                     ));
               }
+
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatPage()));
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),

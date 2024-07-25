@@ -54,17 +54,10 @@ class MyDrawer extends StatelessWidget {
                 const SizedBox(height: 6),
                 const Text('Jainam Doshi', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 Text('+91 9303041034', style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.secondary)),
-                const SizedBox(height: 25),
+                const SizedBox(height: 50),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 36),
-                      child: Text('Settings', style: TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.bold
-                        )),
-                    ),
-                    const SizedBox(height: 6),
                     InkWell(
                       onTap: () {
                         if (kDebugMode) {
@@ -165,6 +158,32 @@ class MyDrawer extends StatelessWidget {
                             Icon(Icons.lock_outline_rounded, size: 24),
                             SizedBox(width: 20),
                             Text('Privacy', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                          ],
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        if (kDebugMode) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                duration: const Duration(milliseconds: 400),
+                                content: Text('Chat Settings', style: TextStyle(
+                                    color: Theme.of(context).colorScheme.primary
+                                )),
+                                backgroundColor: Theme.of(context).colorScheme.surface,
+                              ));
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 32),
+                        height: 50,
+                        child: const Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.chat_bubble_outline_rounded, size: 24),
+                            SizedBox(width: 20),
+                            Text('Chat Settings', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
