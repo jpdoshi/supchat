@@ -82,7 +82,7 @@ SizedBox storiesList = SizedBox(
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5),
                   child: Text('Add Story',
-                      style: TextStyle(fontSize: 12)),
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
                 )
               ],
             ),
@@ -147,8 +147,8 @@ SizedBox storiesList = SizedBox(
                   ]
                 ),
                 const Text('Jon Snow',
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 12)
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500)
                 )
               ],
             ),

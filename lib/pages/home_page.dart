@@ -23,8 +23,8 @@ class _HomePageState extends State<HomePage> {
       extendBodyBehindAppBar: true,
       drawer: const MyDrawer(),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.8),
-        surfaceTintColor: Theme.of(context).colorScheme.surface.withOpacity(0.8),
+        backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.75),
+        surfaceTintColor: Theme.of(context).colorScheme.surface.withOpacity(0.75),
         flexibleSpace: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),

@@ -138,8 +138,8 @@ ListView chatsList = ListView.builder(
                   context: context,
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(40),
-                          topRight: Radius.circular(40)
+                          topLeft: Radius.circular(36),
+                          topRight: Radius.circular(36)
                   )),
                   builder: (context) {
                 return SizedBox(

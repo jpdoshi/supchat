@@ -18,8 +18,8 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.8),
-        surfaceTintColor: Theme.of(context).colorScheme.surface.withOpacity(0.8),
+        backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.75),
+        surfaceTintColor: Theme.of(context).colorScheme.surface.withOpacity(0.75),
         flexibleSpace: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
@@ -97,25 +97,30 @@ class _ChatPageState extends State<ChatPage> {
           Padding(
             padding: const EdgeInsets.only(right: 6),
             child: PopupMenuButton(
-              offset: const Offset(0, 52),
-              elevation: 0,
+              constraints: const BoxConstraints(minWidth: 180),
+              offset: const Offset(0, 60),
+              elevation: 32,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20)
+              ),
+              shadowColor: Colors.black.withOpacity(0.2),
               itemBuilder: (_) => <PopupMenuItem<InkWell>>[
-                PopupMenuItem(child: InkWell(
+                PopupMenuItem(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     children: [
                       Icon(Icons.archive_outlined, size: 22, color: Theme.of(context).colorScheme.primary),
                       const SizedBox(width: 12),
                       Text('Archive Chat', style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15,
                         color: Theme.of(context).colorScheme.primary
                       )),
                     ],
                   ),
-                ), onTap: () {
-
-                }),
-                PopupMenuItem(child: InkWell(
+                ),
+                PopupMenuItem(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     children: [
                       Icon(Icons.favorite_border_rounded, size: 22, color: Theme.of(context).colorScheme.primary),
@@ -127,10 +132,9 @@ class _ChatPageState extends State<ChatPage> {
                       )),
                     ],
                   ),
-                ), onTap: () {
-
-                }),
-                PopupMenuItem(child: InkWell(
+                ),
+                PopupMenuItem(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     children: [
                       Icon(Icons.remove_circle_outline_rounded, size: 22, color: Theme.of(context).colorScheme.primary),
@@ -142,10 +146,9 @@ class _ChatPageState extends State<ChatPage> {
                       )),
                     ],
                   ),
-                ), onTap: () {
-
-                }),
-                PopupMenuItem(child: InkWell(
+                ),
+                PopupMenuItem(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     children: [
                       Icon(Icons.more_horiz_rounded, size: 22, color: Theme.of(context).colorScheme.primary),
@@ -157,9 +160,7 @@ class _ChatPageState extends State<ChatPage> {
                       )),
                     ],
                   ),
-                ), onTap: () {
-
-                }),
+                )
               ],
               icon: const Icon(Icons.more_vert_rounded),
             )

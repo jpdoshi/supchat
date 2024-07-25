@@ -13,8 +13,8 @@ class MyDrawer extends StatelessWidget {
         BackdropFilter(filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6), child: const SizedBox.expand()),
         Drawer(
           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(
-            topRight: Radius.circular(40),
-            bottomRight: Radius.circular(40)
+            topRight: Radius.circular(24),
+            bottomRight: Radius.circular(24)
           )),
           child: SafeArea(
             child: Column(
