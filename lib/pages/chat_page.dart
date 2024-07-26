@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../styles/colors.dart';
 
@@ -98,13 +99,13 @@ class _ChatPageState extends State<ChatPage> {
             padding: const EdgeInsets.only(right: 6),
             child: PopupMenuButton(
               constraints: const BoxConstraints(minWidth: 180),
-              offset: const Offset(0, 60),
+              offset: const Offset(0, 56),
               elevation: 32,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20)
               ),
               shadowColor: Colors.black.withOpacity(0.2),
-              itemBuilder: (_) => <PopupMenuItem<InkWell>>[
+              itemBuilder: (context) => [
                 PopupMenuItem(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
@@ -168,6 +169,146 @@ class _ChatPageState extends State<ChatPage> {
         ],
       ),
       backgroundColor: Theme.of(context).colorScheme.surface,
+      body: Stack(
+        children: [
+          ListView.builder(
+            itemCount: 20,
+            itemBuilder: (context, index) {
+              return Container(
+                padding: const EdgeInsets.all(12),
+                margin: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  color: Colors.teal.shade200,
+                  borderRadius: BorderRadius.circular(8)),
+                child: const Text('some message')
+              );
+            }
+          ),
+          Positioned(
+            bottom: 0,
+            child: SafeArea(child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width - (102),
+                    child: Stack(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+                            child: TextField(
+                              style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                              decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+                              hintText: 'Send Message...',
+                              hintStyle: TextStyle(
+                                color: Theme.of(context).colorScheme.primary.withOpacity(0.4)
+                              ),
+                              filled: true,
+                              fillColor: Theme.of(context).colorScheme.tertiary.withOpacity(0.75),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: BorderSide.none
+                              )
+                            )),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 8,
+                          right: 8,
+                          child: PopupMenuButton(
+                            constraints: const BoxConstraints(maxWidth: 132),
+                            elevation: 32,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)
+                            ),
+                            shadowColor: Colors.black.withOpacity(0.2),
+                            offset: const Offset(8, -172),
+                            itemBuilder: (context) => [
+                              PopupMenuItem(
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.attach_file_outlined, size: 22, color: Theme.of(context).colorScheme.primary),
+                                    const SizedBox(width: 12),
+                                    Text('Docs', style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15,
+                                        color: Theme.of(context).colorScheme.primary
+                                    )),
+                                  ],
+                                ),
+                              ),
+                              PopupMenuItem(
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.play_circle_outline_rounded, size: 22, color: Theme.of(context).colorScheme.primary),
+                                    const SizedBox(width: 12),
+                                    Text('Gallery', style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15,
+                                        color: Theme.of(context).colorScheme.primary
+                                    )),
+                                  ],
+                                ),
+                              ),
+                              PopupMenuItem(
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.audiotrack_outlined, size: 22, color: Theme.of(context).colorScheme.primary),
+                                    const SizedBox(width: 12),
+                                    Text('Audio', style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15,
+                                        color: Theme.of(context).colorScheme.primary
+                                    )),
+                                  ],
+                                ),
+                              ),
+                            ],
+                            child: Container(
+                              height: 36,
+                              width: 36,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(36),
+                                color: Theme.of(context).colorScheme.primary
+                              ),
+                              child: Icon(Icons.add, color: Theme.of(context).colorScheme.surface, size: 22),
+                            ),
+                          ),
+                        )
+                      ]
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: IconButton(onPressed: () {},
+                        icon: Transform.translate(
+                          offset: const Offset(2, 0),
+                          child: SvgPicture.asset('assets/send.svg',
+                            height: 28, width: 28,
+                            colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.surface, BlendMode.srcIn
+                        )),
+                  )))
+                ],
+              ),
+            )),
+          )
+        ],
+      ),
     );
   }
 }
