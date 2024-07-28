@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:supchat/styles/colors.dart';
 
@@ -12,14 +12,11 @@ class MyDrawer extends StatelessWidget {
       children: [
         BackdropFilter(filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6), child: const SizedBox.expand()),
         Drawer(
-          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(
-            topRight: Radius.circular(24),
-            bottomRight: Radius.circular(24)
-          )),
+          shape: const LinearBorder(),
           child: SafeArea(
             child: Column(
               children: [
-                const SizedBox(height: 25),
+                const SizedBox(height: 50),
                 Stack(
                     children: [
                       ClipRRect(
@@ -60,208 +57,150 @@ class MyDrawer extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        if (kDebugMode) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                duration: const Duration(milliseconds: 400),
-                                content: Text('Profile Settings', style: TextStyle(
-                                    color: Theme.of(context).colorScheme.primary
-                                )),
-                                backgroundColor: Theme.of(context).colorScheme.surface,
-                              ));
-                        }
+                        debugPrint('Profile Settings');
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 32),
-                        height: 50,
-                        child: const Row(
+                        margin: const EdgeInsets.only(left: 32),
+                        height: 54,
+                        child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(Icons.account_circle_outlined, size: 24),
-                            SizedBox(width: 20),
-                            Text('My Profile', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                            Container(
+                                height: 36,
+                                width: 36,
+                                decoration: BoxDecoration(
+                                    color: Theme.of(context).colorScheme.tertiary,
+                                    borderRadius: BorderRadius.circular(36)
+                                ),
+                                child: const Icon(Icons.account_circle_outlined, size: 25)
+                            ),
+                            const SizedBox(width: 20),
+                            const Text('My Profile', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
                     ),
                     InkWell(
                       onTap: () {
-                        if (kDebugMode) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                duration: const Duration(milliseconds: 400),
-                                content: Text('Account Settings', style: TextStyle(
-                                    color: Theme.of(context).colorScheme.primary
-                                )),
-                                backgroundColor: Theme.of(context).colorScheme.surface,
-                              ));
-                        }
+                        debugPrint('Show Contacts');
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 32),
-                        height: 50,
-                        child: const Row(
+                        margin: const EdgeInsets.only(left: 32),
+                        height: 54,
+                        child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(Icons.switch_account_outlined, size: 24),
-                            SizedBox(width: 20),
-                            Text('Account', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                            Container(
+                                height: 36,
+                                width: 36,
+                                decoration: BoxDecoration(
+                                    color: Theme.of(context).colorScheme.tertiary,
+                                    borderRadius: BorderRadius.circular(36)
+                                ),
+                                child: const Icon(Icons.contacts_outlined, size: 22)
+                            ),
+                            const SizedBox(width: 20),
+                            const Text('Contacts', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
                     ),
                     InkWell(
                       onTap: () {
-                        if (kDebugMode) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                duration: const Duration(milliseconds: 400),
-                                content: Text('Favorites', style: TextStyle(
-                                    color: Theme.of(context).colorScheme.primary
-                                )),
-                                backgroundColor: Theme.of(context).colorScheme.surface,
-                              ));
-                        }
+                        debugPrint('Favorite Contacts');
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 32),
-                        height: 50,
-                        child: const Row(
+                        margin: const EdgeInsets.only(left: 32),
+                        height: 54,
+                        child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(Icons.favorite_border_rounded, size: 24),
-                            SizedBox(width: 20),
-                            Text('Favorites', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                            Container(
+                                height: 36,
+                                width: 36,
+                                decoration: BoxDecoration(
+                                    color: Theme.of(context).colorScheme.tertiary,
+                                    borderRadius: BorderRadius.circular(36)
+                                ),
+                                child: const Icon(Icons.favorite_border_rounded, size: 23)
+                            ),
+                            const SizedBox(width: 20),
+                            const Text('Favorites', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
                     ),
                     InkWell(
                       onTap: () {
-                        if (kDebugMode) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                duration: const Duration(milliseconds: 400),
-                                content: Text('Privacy Settings', style: TextStyle(
-                                    color: Theme.of(context).colorScheme.primary
-                                )),
-                                backgroundColor: Theme.of(context).colorScheme.surface,
-                              ));
-                        }
+                        debugPrint('Saved Messages');
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 32),
-                        height: 50,
-                        child: const Row(
+                        margin: const EdgeInsets.only(left: 32),
+                        height: 54,
+                        child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(Icons.lock_outline_rounded, size: 24),
-                            SizedBox(width: 20),
-                            Text('Privacy', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                            Container(
+                                height: 36,
+                                width: 36,
+                                decoration: BoxDecoration(
+                                    color: Theme.of(context).colorScheme.tertiary,
+                                    borderRadius: BorderRadius.circular(36)
+                                ),
+                                child: const Icon(Icons.chat_bubble_outline_rounded, size: 20)
+                            ),
+                            const SizedBox(width: 20),
+                            const Text('Saved Chats', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
                     ),
                     InkWell(
                       onTap: () {
-                        if (kDebugMode) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                duration: const Duration(milliseconds: 400),
-                                content: Text('Chat Settings', style: TextStyle(
-                                    color: Theme.of(context).colorScheme.primary
-                                )),
-                                backgroundColor: Theme.of(context).colorScheme.surface,
-                              ));
-                        }
+                        debugPrint('Premium Features');
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 32),
-                        height: 50,
-                        child: const Row(
+                        margin: const EdgeInsets.only(left: 32),
+                        height: 54,
+                        child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(Icons.chat_bubble_outline_rounded, size: 24),
-                            SizedBox(width: 20),
-                            Text('Chat Settings', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                            Container(
+                                height: 36,
+                                width: 36,
+                                decoration: BoxDecoration(
+                                    color: Theme.of(context).colorScheme.tertiary,
+                                    borderRadius: BorderRadius.circular(36)
+                                ),
+                                child: const Icon(Icons.star_border_rounded, size: 26)
+                            ),
+                            const SizedBox(width: 20),
+                            const Text('Get Premium', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
                     ),
                     InkWell(
                       onTap: () {
-                        if (kDebugMode) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                duration: const Duration(milliseconds: 400),
-                                content: Text('Storage Settings', style: TextStyle(
-                                    color: Theme.of(context).colorScheme.primary
-                                )),
-                                backgroundColor: Theme.of(context).colorScheme.surface,
-                              ));
-                        }
+                        debugPrint('Settings Page');
                       },
                       child: Container(
-                        padding: const EdgeInsets.only(left: 32),
-                        height: 50,
-                        child: const Row(
+                        margin: const EdgeInsets.only(left: 32),
+                        height: 54,
+                        child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(Icons.data_usage_rounded, size: 24),
-                            SizedBox(width: 20),
-                            Text('Data & Storage', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
-                          ],
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        if (kDebugMode) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                duration: const Duration(milliseconds: 400),
-                                content: Text('Help Settings', style: TextStyle(
-                                    color: Theme.of(context).colorScheme.primary
-                                )),
-                                backgroundColor: Theme.of(context).colorScheme.surface,
-                              ));
-                        }
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 32),
-                        height: 50,
-                        child: const Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(Icons.help_outline_rounded, size: 24),
-                            SizedBox(width: 20),
-                            Text('Need Help?', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
-                          ],
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        if (kDebugMode) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                duration: const Duration(milliseconds: 400),
-                                content: Text('More Info', style: TextStyle(
-                                    color: Theme.of(context).colorScheme.primary
-                                )),
-                                backgroundColor: Theme.of(context).colorScheme.surface,
-                              ));
-                        }
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 32),
-                        height: 50,
-                        child: const Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(Icons.info_outline_rounded, size: 24),
-                            SizedBox(width: 20),
-                            Text('More Info', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                            Container(
+                              height: 36,
+                              width: 36,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.tertiary,
+                                borderRadius: BorderRadius.circular(36)
+                              ),
+                              child: const Icon(Icons.settings_outlined, size: 24)
+                            ),
+                            const SizedBox(width: 20),
+                            const Text('Settings', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),

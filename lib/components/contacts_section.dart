@@ -118,73 +118,78 @@ class ContactsSection extends StatelessWidget {
               fontSize: 17
           )),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface,
-              boxShadow: [BoxShadow(
-                color: Colors.black.withOpacity(0.12),
-                blurRadius: 6,
-                offset: const Offset(0, 1)
-              )],
-              borderRadius: BorderRadius.circular(15)
-            ),
-            child: TextField(
-              style: TextStyle(color: Theme.of(context).colorScheme.primary),
-              decoration: InputDecoration(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 12),
-                hintText: 'Search Contacts',
-                hintStyle: TextStyle(color: Theme.of(context).colorScheme.secondary),
-                filled: true,
-                fillColor: Theme.of(context).colorScheme.inversePrimary,
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: SvgPicture.asset(
-                    'assets/search.svg',
-                    colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
-                )),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide.none
-              )),
-            ),
-          )
-        ),
-        contactsList,
+        searchBar(context),
+        contactsList(),
         const SizedBox(height: 80)
       ],
     );
   }
 }
 
-ListView contactsList = ListView.builder(
-    itemCount: 20,
-    primary: false,
-    shrinkWrap: true,
-    itemBuilder: (context, index) {
-      return SizedBox(
-          height: 64,
-          child: InkWell(
-            onTap: () {
-              if (kDebugMode) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      duration: const Duration(milliseconds: 400),
-                      content: Text('add chat for index: $index', style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary
-                      )),
-                      backgroundColor: Theme.of(context).colorScheme.surface,
-                    ));
-              }
+Padding searchBar(context) {
+  return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surface,
+            boxShadow: [BoxShadow(
+                color: Colors.black.withOpacity(0.12),
+                blurRadius: 6,
+                offset: const Offset(0, 1)
+            )],
+            borderRadius: BorderRadius.circular(15)
+        ),
+        child: TextField(
+          style: TextStyle(color: Theme.of(context).colorScheme.primary),
+          decoration: InputDecoration(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+              hintText: 'Search Contacts',
+              hintStyle: TextStyle(color: Theme.of(context).colorScheme.secondary),
+              filled: true,
+              fillColor: Theme.of(context).colorScheme.inversePrimary,
+              prefixIcon: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: SvgPicture.asset(
+                    'assets/search.svg',
+                    colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
+                  )),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide.none
+              )),
+        ),
+      )
+  );
+}
 
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatPage()));
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Row(
-                children: [
-                  Stack(
+ListView contactsList() {
+  return ListView.builder(
+      itemCount: 20,
+      primary: false,
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        return SizedBox(
+            height: 64,
+            child: InkWell(
+              onTap: () {
+                if (kDebugMode) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        duration: const Duration(milliseconds: 400),
+                        content: Text('add chat for index: $index', style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary
+                        )),
+                        backgroundColor: Theme.of(context).colorScheme.surface,
+                      ));
+                }
+
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatPage()));
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
+                  children: [
+                    Stack(
                         children: [
                           ClipRRect(
                               borderRadius: BorderRadius.circular(46),
@@ -214,18 +219,19 @@ ListView contactsList = ListView.builder(
                                 ),
                               ))
                         ]
-                  ),
-                  const Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Text('Robert Baratheon', maxLines: 1, overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 17)),
                     ),
-                  ),
-                ],
+                    const Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        child: Text('Robert Baratheon', maxLines: 1, overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: 17)),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          )
-      );
-    }
-);
+            )
+        );
+      }
+  );
+}
